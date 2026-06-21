@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料索引 · 世界杯投注信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #1e2228;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    /* 卡片系统 —— 浅灰背景、细边框、柔和阴影 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e6ea;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.6rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    /* 排版节奏 */
+    .hero {
+      text-align: center;
+      padding: 2.6rem 2rem 2rem;
+    }
+
+    .hero .prelude {
+      font-size: 1.1rem;
+      color: #5b6778;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #13171d;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-top: 0.2rem;
+    }
+
+    .hero .sub {
+      margin-top: 0.8rem;
+      color: #4b5563;
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1a1f27;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid #b5c0cd;
+      padding-left: 0.75rem;
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      color: #2f3640;
+      margin-bottom: 0.8rem;
+    }
+
+    .intro-text strong {
+      font-weight: 500;
+      color: #1e293b;
+    }
+
+    /* 特点列表：紧凑，信息密度高 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 1.6rem;
+      padding: 0.2rem 0;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .feature-marker {
+      font-size: 1.1rem;
+      color: #748094;
+      line-height: 1.4;
+      min-width: 1.4rem;
+    }
+
+    .feature-content {
+      font-size: 0.95rem;
+      color: #2c3340;
+    }
+
+    .feature-content .label {
+      font-weight: 500;
+      color: #1f2733;
+      display: inline-block;
+      margin-bottom: 0.1rem;
+    }
+
+    .feature-content p {
+      margin-top: 0.1rem;
+      color: #4b5563;
+      font-size: 0.9rem;
+    }
+
+    /* 场景与提示区块 */
+    .scenario-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      padding: 0.3rem 0;
+    }
+
+    .scenario-tag {
+      background: #f0f2f5;
+      border-radius: 36px;
+      padding: 0.2rem 1.2rem;
+      font-size: 0.88rem;
+      color: #2f3847;
+      border: 1px solid #dfe3e9;
+    }
+
+    .tip-block {
+      background: #f8f9fb;
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      margin-top: 0.8rem;
+      border-left: 3px solid #bbc5d3;
+      font-size: 0.92rem;
+      color: #374151;
+    }
+
+    .faq-mini {
+      margin-top: 0.5rem;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1f2937;
+      margin-top: 1rem;
+    }
+
+    .faq-a {
+      color: #4b5563;
+      margin-top: 0.2rem;
+      padding-left: 0.3rem;
+    }
+
+    .inline-link {
+      color: #1e3a5f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #d0d7e2;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .inline-link:hover {
+      color: #0b1d33;
+      border-bottom-color: #1e3a5f;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6a7a8e;
+      padding: 2rem 0 0.6rem;
+      border-top: 1px solid #dce1e8;
+      margin-top: 0.6rem;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.6rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .scenario-line {
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- hero 开场短句 -->
+    <div class="card hero">
+      <div class="prelude">一份资料索引 · 从碎片到脉络</div>
+      <h1>关于世界杯投注的信息整理</h1>
+      <div class="sub">
+        不堆砌观点，只梳理可查证的结构、规则与渠道边界。
+      </div>
+    </div>
+
+    <!-- 承接段落：资料整理的角度 -->
+    <div class="card">
+      <div class="section-title">为什么需要一份索引</div>
+      <div class="intro-text">
+        每届世界杯周期，围绕投注产生的术语、平台、赔率类型、合规区域等信息分散于各处。对于希望系统了解 <a href="https://portal-worldcupwager.com" class="inline-link">世界杯投注</a> 的人来说，缺的往往不是观点，而是一份结构化的参照。这里尝试把常见信息单元按逻辑归位，不提供建议，只提供目录式的框架。
+      </div>
+      <div class="intro-text">
+        从基础概念（让球盘、大小球、波胆）到资金管理常识，再到不同司法管辖区的监管备注——这些条目并非教程，而是检索起点。你可以把它当作一张便签，沿着线索自行深入。
+      </div>
+    </div>
+
+    <!-- 特点列表：信息密度稍高 -->
+    <div class="card">
+      <div class="section-title">条目特点 · 摘要</div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <span class="feature-marker">·</span>
+          <div class="feature-content">
+            <span class="label">盘口类型索引</span>
+            <p>亚洲盘、欧洲赔率、大小分界线 —— 每个条目附带简要定义与常见表示法，不评价优劣。</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-marker">·</span>
+          <div class="feature-content">
+            <span class="label">平台特征速览</span>
+            <p>记录界面语言、支付方式、赛事覆盖范围等客观属性，不涉及排名或推荐。</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-marker">·</span>
+          <div class="feature-content">
+            <span class="label">规则差异备注</span>
+            <p>加时赛是否计入、走水判定、串关限制 —— 不同地区的规则细节以表格形式归档。</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-marker">·</span>
+          <div class="feature-content">
+            <span class="label">资金管理参考</span>
+            <p>仓位比例、止损线、记录模板 —— 属于工具性内容，不构成操作指引。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景与提示 -->
+    <div class="card">
+      <div class="section-title">常见使用场景</div>
+      <div class="scenario-line">
+        <span class="scenario-tag">赛前资料对比</span>
+        <span class="scenario-tag">规则查证</span>
+        <span class="scenario-tag">术语释义</span>
+        <span class="scenario-tag">监管信息核实</span>
+        <span class="scenario-tag">历史数据参照</span>
+      </div>
+      <div class="tip-block">
+        <strong>一个小提示：</strong> 索引的价值在于更新。如果发现某条信息与当前实际不符，建议以平台最新条款或监管公告为准。这里不替代任何官方文件。
+      </div>
+    </div>
+
+    <!-- FAQ 摘要（温和结尾） -->
+    <div class="card">
+      <div class="section-title">FAQ 摘要 · 索引之外</div>
+      <div class="faq-mini">
+        <div class="faq-q">为什么只列条目，不写教程？</div>
+        <div class="faq-a">目的并非教学，而是减少信息检索成本。每个条目都附带简短说明和可查证的方向，你可以根据需求进一步查阅。</div>
+        <div class="faq-q">是否包含实时赔率或推荐？</div>
+        <div class="faq-a">不包含。所有内容均为静态资料整理，不涉及动态数据、预测或任何形式的建议。</div>
+        <div class="faq-q">如何理解「从资料整理的角度」？</div>
+        <div class="faq-a">简单说，就是分类、定义、关联——如同图书馆的目录卡片。不评价对错，只呈现框架。</div>
+      </div>
+      <div style="margin-top:1.2rem; padding-top:0.6rem; border-top:1px solid #edf0f4; font-size:0.9rem; color:#526277;">
+        如果你希望进一步查阅具体条目，可参考 <a href="https://portal-worldcupwager.com" class="inline-link">世界杯投注</a> 相关分类页面的索引结构。
+      </div>
+    </div>
+
+    <div class="footer-note">
+      资料索引 · 仅作信息整理 &nbsp;|&nbsp; 内容仅供参考，不构成任何决策依据
+    </div>
+
+  </div>
+</body>
+</html>
